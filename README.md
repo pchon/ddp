@@ -1,5 +1,4 @@
 # ddp
-devdataprod
 
 The slidify presentation describes the shiny app which uses  ggplot2 library and mtcars dataset.
 
