@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slidify Project</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Slidify Project">
+  <meta name="author" content="petcho">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Slidify Project</h1>
+    <h2>ggplot example</h2>
+    <p>petcho<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The data Set</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973-74 models).</p>
+
+<p>Here is a data sample: </p>
+
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Functionality</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The application uses the ggplot2 library.</p>
+
+<ul>
+<li><p>Choose Y-axis and X-axis variables</p></li>
+<li><p>Choose a group attribute (group by color)</p></li>
+<li><p>Add a regression line</p></li>
+<li><p>Automatic update plot title </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>ggplot2 example</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">require(ggplot2)
+ggplot(mtcars, aes(x=mtcars$wt, y=mtcars$mpg, colour=factor(mtcars$cyl)))+geom_point() +  geom_smooth(method=lm) +  ggtitle(&quot;disp vs cyl&quot;) +  xlab(&quot;Weight (lb/100)&quot;)+  ylab(&quot;Miles per Gallon&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAEgCAMAAABrWDzDAAABGlBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZpAAZrYAujg6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZrY6kNs9rV9hnP9ipXZmAABmADpmAGZmOjpmOpBmZgBmZmZmkJBmtrZmtv93m9Z/f39/f5V/f6t/lcF/q9aQOgCQOjqQOmaQkGaQtpCQ27aQ2/+Vf3+VlcGVweuqqqqrf6urlZWr1v+1tbW2ZgC2Zjq2tma22/+2/7a2/9u2//+5ubm7jIm+vr7BlX/BlZXBlavBwdbB6//Hx8fOzs7ShH/Wq3/W1tbW///bkDrbtmbb/7bb/9vb///l5eXrwZXr1qvr///y8vL4dm3/tmb/1qv/25D/27b/68H//7b//9b//9v//+v////2fqYSAAAACXBIWXMAAAsSAAALEgHS3X78AAAV+klEQVR4nO2diX8jt3WAKSWKtFFbR9JqnXZTSrWXbl25SizRbqLGdmLqWDaRVC8pJlqK//+/UQBzEBhcDzN4c/F9Py2PGfItCHx8wFzgYEUQFRg0XQCi25BARCVIIKISJBBRCRKIqAQJRFSCBCIqQQIRlSCBiEqQQEQlSCCiEiQQUQkSiKgECURUggQiKkECEZUggYhKkEBEJfor0Hz76vnNWYk3lnvXptJrgcq9kQQKoZ8CPR8Ptv4jyUDTwWDrjEnx5atBatR4N7lJ1ggWrwY798mK6S4JFEIvBVqODphDQiCeh3hnxp6tpolBfNHz8TBdw5ewZ/wt/NlyNCSBQuilQMKLeS7QSiiS3iR3bLHUxUkvWuyXHDltKr0UaMr6o1SF5WgwGKbjGp5lOKyrYn/pmvz1yYrpLo2Bgui7QOzZmA11FIHm279PctE4HQRlAi32/zAakkBB9FIgqQvjT5k4chfG7n+zn3RfqVJZb7Yc8RUkUAi9FGg52pUH0YtfnolB9DhNNGz7azexhq3hz7lZ091sBQkUQi8F4uObbDN+POBDnefjt4NB5g/bauepKFmTLki28cUKEiiEfgqkkfVeHhb7JXc+bi4kkMz0ALsgvYMEWrN4lXdyBJQQgR6KfNCWONEDOEGN3uGiy9HRvABDAiEEJ4HMNFdP8aN3uOgkUHg9xY/e4aKTQOH1FD96h4tOAoXXU/zoHS46CRReT/Gjd7joJFB4PcWP3uGid0Wg29PTC3H7bz+mS5qrp/jRO1z0jgj09G718XfvX374cb2ouXqKH73DRe+IQAwm0Mevvzp9xx+fMmoqEtElHALdnp6vnj57v3q8SBfoX4XJpJ4vWvzolIEi4RxEP57z26fz9Kn+SSZBBrWpFUigSNjHQOdcIHHrykAhBrWpFUigSDi3wt6J2ywBWQSCK9SmViCBIlFtP9AkyKA2tQIJFIkoApkNms2i1RMEEqgR4ghkUmg2KxrUplYggSIRSyDdIBKohuhoXoCJJpDJoGj1BIEEaoR4AvnH0m1qBRIoEjEF8hnUplYggSIRVSCPQW1qBRIoEnEFcivUplYggSIRWyCXQm1qBRIoEvEFshvUplYggSKBIJDVoDa1AgkUCQyBbAq1qRVIoEjgCGQ2SA+g7Wu01BMEEqgRQgT6oHFtRX/thw9aAH60w/TCUhiKFw/U4BWio3kBBikDGZOQFkA/XGb5okGgDNQIeALpClEXFj06mhdgMAUqGtSmViCBIoEqUMGgNrUCCRQJXIFUhdrUCiRQJLAFkhVqUyuQQJHAF2htUJtagQSKRA0C5Qa1qRVIoEjUIVCmUJtagQSKRD0CJQq1qRVIoEhUE2gGN2jSrlYggSJRMQPNAhRqVSuQQJGo3IUFKNSmViCBIlFJoNnNJFXo5gYg0F3QbEIkECA6mhdgqgg0m6Xe8AcAg+4mQdMJkUD+6GhegIki0ORmNgMKFKAQCeSPjuYFGP8srfkkrbYuTBh0AxgL3aX34fUEgQRqBM8srU+f/8T+0kX6J1H88CqUCQQ0iATyR6/JEgeeWVofz/ntyjZL653KbHYHA+vTELXjmaX18WL18qf36QL9q6AlGX6Sqj8DwZIQZSB/9FocceKZpTXPQBz9kxg9sSp0pzwLqScIJFAj+GZpDRgDeRW6KzyH1xMEEqgR/LO0OrbC7AdTjQoVBfIoRAL5o9fiiBO0o/EGhXSBnAqRQP7oaF6AQTydQ1PIJJBDIRLIHx3NCzCo5wMVFDILZFWIBPJHR/MCDPIJZYpCNoEsCpFA/uhoXoBBPyNRUsgukFEhEsgfHc0LMDWc0por5BLIoBAJ5I+O5gWYWs6JThVyC6RJRAL5o6N5Aaamk+rFIQ6/QIpCJJA/OpoXYOq6KmMCPvm1nlYggSJRo0CTuzCFSCB/dDQvwNQqUMAp+NitQAJFomaBQhQigfzR0bwAUxBoPuBsXxlfq3+SEgLBFbrG/E1oEigSqkDPx0PHa/VPUkogqELXyR1OK5BAkSgI9Kk59yTok4TaZ2lVuLkRd3frJbMZ8K22GV9jTnXadPA+zdI6PnC8Vv8qwDLPTXrVmLIfyJ+FruUnsb/GlIEiUezCMMZARoH8Cl0XF8RsBRIoErVshaXXH2p7ot0KaQK5JSKBGqGaQPwGKJFJILdCRoHsEpFAjVAQaDliPdjOvfm1rk9SUiDXhUBWgcwSkUCNoAq0HPFB9NRikK+eSgmUSBQskK4RCdQIps1428Y8rJ5KCGRWCCCQLBEJ1AgxM9CaYIFMCgEFyjQigRoh1hhIJ1AgXaEggUKnryKBIlF9K8yFXSDjhFSqQsECCcIbAcLGCDR3HcsygSsQxyjQjWVKM1mhcgIBNeqlQM/HA+VIwjdn0hP5IIOyQoJ3QEqExS/PprtOKWSB0v3QAXuioR8ZLJCsUBWBvBL1UiDW3PLT+Zb09PnNmXmF8o7tb98q61jExb7r+GgNGSgD0IWpCpFA/uhK+7D8sfWfx2IMOx0MdvnTszF7wE/S2f52+2q69Q+DX4wGO3/lK/grRMrYueer/zBKXviWd2HJuw9W410mkPsMjRoFeniAnFQvKUQC+aOrDZRkIJZf2B9rd/5g++r5+GA+GPJN6yl7PhguXg3zV6SvZqvZW//236yfE0KJddOdvxwP2eJkyxwkEF4Xtq6nAIVIIH90XSCmAEsvYkN6njwY7/Iua8wE2r5ijxKB0l014tWiRxsnzT7/zathsu75zZf7V0Ig5yCozgyUBAArFDILPgmUCjQWCYT9scSxzkDMkKkqUPKK/NVJ/hhOt7/9V5G5RAf2j7ursAyk8PL96ennP/FZgvIJguLVE8iI66AfUiCBhEBsPPOzV0M+itm5X7zKxkDMEKZSLhBfMU1HPz8TPontr537pRgJJe9epT1b2BhomndhT3x2qYuXH35cr4xZTyCBgn5IgQRyIm+FOZD2A82TkUzQVhj7X+a7q3zL//Hi49df8XnKbLO0VgE4oSt45leaCtaN82RTA9N0j1DAfiBxGDX5E89YEnr67D2fqTUh/hfNm4Em8CxEGagRCgdTvzhjf2nSun2XLOTTbQow6gkgEFAhEsiQ1LH10cZAzJ15sjf75fuLVB7EDMQBCARSqCjQzQzYCOWL3nz0gkDaBS21C7Tmlo96zvldloCQBLIqpO4Hgv+QQurPzcxlEAkUifr3A5kACORViARqgUBsxD217ohGFMiokL4n2qkQdWHNC8T3YU8PrBtuuPUEEMipEA2iGxdI7GtiAtl2HWHXE0Ag8C9xkEBNCJTu/6l2Un2VegIIZD1KRgLlAqVzEWQCTQN3IQYhC7QcJfux55VPqi9fTwCBEolIIPFOhbvMn9wg0ZyDugQSh88c56vVU08ggSA/pOD8X3oq0ExBCLT45H9rEyi5KMO2EVaTQLlCvvOBfD+k4Pw/eiqQ3oWx8ci8PoHc1FdPIIF8P6Tg/B96LZA8iBbnVyAa1E6BhEKQMxJdP6TgjL8xAjE2IwNp+41lgS4v/QopAvFz9p1lIYEi0RaB+JivGF0WyK+Qes0HM8hZlk0SCJWQORIx68kk0HqD7PLSrxAJ1AKBll+4zntErSf90OeH9Sb95aVfIerCWiBQ6ByJ+PWkCuRwSN+16A+OW/Q6oqsN1IITypw0M5st/yL9j4z2NUu4S3adrala3OpFx4+uNlDzGchNU180JQNZs5D2Qwqw4LhFx46uNlALBFqOBjt/sV0A0lw9XWpYBGIKkUBNDqJHB4tP7ps8mGqOXkxBJoWyQXSehKDBcYuOG11toOYFYpvxTKDmTuewRdc6MYND662wVCFocNyi40ZXG6h5gZIMVH2OxMr1xDfqFYH8Csmb8UIh539AAkUCb47EKvUkdisWBFor9Mc/mhxSj4UxhR4e9vas/0OvBTo8lAQSEwHh0c6tMLNAk8wf1aBLk0BMIeaP3aA+C3R4mBu0Ws2ZPePQiQ8DaKdApi4sN0gTKHFIPxq/gQLtKYjTOd7WmoFEF2b7/xqrp73DiaxQ7s/r15JDhtM5qAtj2YdP11JbBkonGm/ksh57dP5lmigKZf7IBn1X3CyDBcctOnZ0tYGMJ5QNcc/niP9TB/HraW/v8FCSyCGQsmEGC45bdOzoagOZBJrXmoGS5NO2DJR1YXupRZJBl7pAuUTA4LhFR46uNpBxM36Kekar+Wi85Xh8c/UkdUxCouIYuiiQABoct+i40dUGasF+ICfN1VNheMwl8gvk7MpIoEh0UiDeje0VLbIKVNw2q7fouNHVBiKBbNFNJnBHZImAAqUS9VOgNp1Qlk/zm8/y2zKBssF0lopIoHZloGSa36fPf2J/6aLm6skiwloW06iIBGpAID6f+WCQ7TZ4vHg8X3383fsVxjS/IShp+fAwf/idDJdIfr55EwA3L9DzmzP2l80PxJLQ48Xq5U/v07XNfdHk9MEPFZqS0Hdyf0YZqCGBPr1iOUia5jfPQG0VaKIKJPdnJFATXdgg+fWffJrfFo6BFH/WBqmD6D31ABoJVJNAa/Jpftu7FaYqZNgKM0rE/AMU/egoUtEhxBbo5EQSaDywzfcUhe7uByoqZNmML0rEe0B/0Y+OVIM6JdDJSW6QmG7OdpFEFLpxWY9PoIl7P5Dcn/VboCMFLhC/yqa+E8raelmPFckg347ETKJN68Lm1nPco9CNy3oATCB7okUqOtmoQfR01/eLX9Vo6WU9ZaJngyGHQIyTE3Gia7uKXjq62kBGgQ48k/ZUpJ2X9ZSLLg+pHQKdnJQJHkSLBOItinhCYke2wqDR5VH1by0SnWxWF4ZNvwSSN9curfOaHe61seiloqsN1LRAdfxufLl6gkeXBZqYpzbjZ+i3sehloqsN1LRAPpqrp4DoqkAmh0igmPROoIeiQMVR9eFhb7uwJlB/ref3rZsjsUR0XaCJfCkQaE+0NTiMDRXIR3P1FBjdIFCu0OvXr0mgiPRSoAeTQJlDr1/zNdfu6w5dwQGQQEaam4w0ODobPxpnc1XmedVCHB2Bgkcn1iytTaD+4Fz3N+NzTBkoS0MT+Zdc1m8pHoK3B/exqRnIcxl1c/VUJrr9lFZVoLVCJFAJil3Y1PHrUs3VU5noVn8E+m9JPWjncDRWdHh0bD38mMZA4z50YQ9HgQIV+rMmiw6PjisHhKJA44H94G1z9VQm+iQ5Ky9MIJtDJJCN4hjIdeS/uXoqEz31wWKR5+cQzcHtXVzcosOjI9sBoLdbYcoYSLcI8nuaxeCOQXbcosOj1yOJi37uSORoPihdGkQgSSMSyMYGCaQkI7hAAurCbGycQLJFcMQcwrUVHR4dzQswvRXo6MRpxPXEvZVmEigBv+gB0dG8ANNXgY6OTpwG5V0YzCJtFnO3SCSQkebqKTy6VyBltdcig0Aui0ggI83VU4noni6MX91TWOTq0mwCWUQigYy4PgluPZWJ7m5xg0CSRsECFVwigYy4PgluPZWJbjVH3F1bezi+IpudoIxAIvokZJutrwKJqcluT9cTBLk+CW49lYlu0yMx51q2yfQCQW5RCYEkQovuoSMCPZ1+9n718sOP6yWuTwKh7iOSXoFM/Zi+LGRz3yyQz6ZeCvTyZz675sevvzp9x582O0trZdYztJ6cyI/lZ4YXSAiL7BO/lqLpWomBowvjAj2xLPR4kS5wfRUgtOOcCDlHuDf1Je6kZFQxA9mi20tcPILSjQy0yuf3fTpPF2ifrJMCrYOHNnEKoEsrI1CRvKjaMdwuCcTl6VkG0oOXamKnRTEEyklHZcay1+KIE18GuuVTtabU28R1CKR+tcOb2JaMogq07mj1iqlDETf93Q8ECG45wSe0icudrgaNLqFXDJoXYEggG4FNrFhEAhkxtwKc1gnkP0MssImzLo0EMmJpBTDtEwhM0J7ocqerkUBeOiyQCA434tpwOI0E2niBEoACZUAsIoGCWwFCkwIVB0dK8CCB1hbZNSKBYHRHIG3zzBA8RCBJIxII3Aoa/RJIECSQ1SISCEZ3BHJ3YSqBAq0tCj9dTS87mhdgSKAowQMFkjQigeK1Qp3RUYIHCqRaRAJFaoV6oqOebBS8Jxq4y0gvO5oXYEgghOAlD2V4LdLLjuYFmJ7O0tp0cNMMsXbknygQFlleZyhX41AGQgieRQ/MQGssXZpedjQvwJBACMHX0UsKJGskiaSXHc0LMCQQQvDqJ8zqIpFAmyqQoJJAuUV6dDQvwJBACMGN0SsKRBlo0wUSkECwejJDAnFIIFg9GSCBUkggWD0VIYFkSKA2tELp6K0oOgkUVq0kkAYJFAIJZIEEgkECWaOTQLB6CmKTBHowbN5rkxedHGnR0bwAQwIhBC8bveBPwaCTk/RgBgkEY/MEEpBAsHrys6ECPWQOdb4LS6f5zWf5JYHqi96HQbSY5vfp85/YX7okfj052WSBEjotUDLN7+N5koi6Ps1vV2n/tMCeORIfL/LJWikDNRO9qxkoFSjLQBzUetIhgTI6LBCNgcoER4neTYFoK6xM8Pqi16GIG9oPhBCcBDLTXD3Fj97hopNA4fUUP3qHi04ChddT/OgdLjoJFF5P8aN3uOgkUHg9xY/e4aKTQOH1FD96h4tOAoXXU/zoHS46CRReT/Gjd7jo3RWoKriH81Gjd7joyJBAzQcngYB0uBU6XHRkSKDmg5NAxOZCAhGVIIGISpBARCVIIKIStQn08v3paX52dXxuT08v0IKv+MUFaLCir08b7hy1CfT0jlUVWhuz6OurRxDCn+IJ9PJDd+1Z1dyFPWImCUSB/v5f/4cn0Mevvzp9hxYdnToFesKsp1u8JMHUfMIT6Omz97jfLFxqFOgW+XuGNk555Nd1Iw6CmESo0VGpcRCN+S3jLYA50MXMQOfIfTsutQl0i/s1ZuExExxmirhFTm+40H4gohIkEFEJEoioBAlEVIIEIirRJ4HGw9VqPuA3u+mSxf6V+ihbMD3gj/gbGMsvztI1z8eDnfvsbvHJfd2foIP0SaDpAfv39iB5UEAViLkhCcRNmQ+2r1bL0XA13c3uTGGIIn0SiImw/OJLfnPGkwgzglvCHv3812eL/X8ZDIbJUpGrhEBvB2nCGm99yV/6qXhLeieeEh76JBBr8Od//uu/CwHGBzyJCEsOVvOts8Urdrdzn2SgzJDxzjoR8Qc8FT2/OUvvVlmGIhz0SSCWeRa/Yq3Obnj7M03SdMJX7AtnEoG4IZk546EYAonnzDD+zvSO+jAIfRJoNR1Oh6v5AWt31lcNBltcGy5LUSBuCH/0jcgyyWDZlIFIID+9Emi+y5RY/Oqbs2z44s9AbMCcbLMt9DEQCQSgVwI9/1qkm39ibT/OhzzpGEgWKB8DiVFSMtLhz5ejg2QrTNzRGAhCrwRajkSz8xvWh22dZVthv8gz0HJU2ArbOkuGQIb9QLQVBqFXAtlY70/MFoD2EVIPBqD3Ai1HfDRdXApxg/ZEQ+i9QAQuJBBRCRKIqAQJRFSCBCIqQQIRlSCBiEqQQEQl/h8rr35pqprrNgAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Shiny Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>the shiny application can be found here </p>
+
+<p><a href="https://petchon.shinyapps.io/DEVDP/">https://petchon.shinyapps.io/DEVDP/</a></p>
+
+<p>thank you!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The data Set'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Functionality'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='ggplot2 example'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Shiny Application'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -1,0 +1,56 @@
+---
+title       : Slidify Project 
+subtitle    : ggplot example 
+author      : petcho
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : standalone # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## The data Set 
+
+The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973-74 models).
+
+
+Here is a data sample: 
+
+```{r echo=FALSE}
+head(mtcars)
+```
+
+--- 
+
+## Functionality
+The application uses the ggplot2 library.
+
+* Choose Y-axis and X-axis variables
+
+* Choose a group attribute (group by color)
+
+* Add a regression line
+
+* Automatic update plot title 
+
+---
+
+## ggplot2 example
+
+```{r fig.width=8, fig.height=4}
+require(ggplot2)
+ggplot(mtcars, aes(x=mtcars$wt, y=mtcars$mpg, colour=factor(mtcars$cyl)))+geom_point() +  geom_smooth(method=lm) +  ggtitle("disp vs cyl") +  xlab("Weight (lb/100)")+  ylab("Miles per Gallon")
+```
+
+---
+
+## Shiny Application
+
+the shiny application can be found here 
+
+https://petchon.shinyapps.io/DEVDP/
+
+thank you!
+
